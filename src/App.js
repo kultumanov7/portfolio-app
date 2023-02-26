@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import About from "./components/About";
 import Contacts from "./components/Contacts";
@@ -8,6 +9,12 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 
 function App() {
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal((prev) => !prev);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -15,7 +22,7 @@ function App() {
       <About />
       <Experience />
       <Projects />
-      <Contacts />
+      <Contacts modal={modal} setModal={setModal} handleModal={handleModal} />
       <Footer />
     </div>
   );
